@@ -18,8 +18,9 @@
 ![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![Provider](https://img.shields.io/badge/Provider-6.1-7C3AED?style=for-the-badge&logo=flutter&logoColor=white)
+![SharedPrefs](https://img.shields.io/badge/SharedPreferences-2.3-F59E0B?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)
-![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-F59E0B?style=for-the-badge&logo=android&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS-EC4899?style=for-the-badge&logo=android&logoColor=white)
 
 <br/>
 
@@ -36,27 +37,40 @@
 
 <br/>
 
-> **Note:** Run the app and replace these placeholders with your actual screenshots.
-
-<br/>
-
 <div align="center">
 
-| Home / Quiz Screen | Answer Revealed | Side Drawer |
-|:------------------:|:---------------:|:-----------:|
-| ![Quiz Screen](screenshots/quiz_screen.png) | ![Answer](screenshots/answer_revealed.png) | ![Drawer](screenshots/drawer.png) |
-
-| Manage Cards | Add New Card | Dark Mode |
-|:------------:|:------------:|:---------:|
-| ![Manage](screenshots/manage_screen.png) | ![Add Card](screenshots/add_card.png) | ![Dark](screenshots/dark_mode.png) |
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/quiz_screen.jpeg" width="200" alt="Quiz Screen"/>
+      <br/><sub><b>🏠 Quiz Screen</b></sub>
+    </td>
+    <td align="center">
+      <img src="screenshots/answer_revealed.jpeg" width="200" alt="Answer Revealed"/>
+      <br/><sub><b>🔄 Answer Revealed</b></sub>
+    </td>
+    <td align="center">
+      <img src="screenshots/drawer.jpeg" width="200" alt="Side Drawer"/>
+      <br/><sub><b>🗂️ Side Drawer</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="screenshots/manage_screen.jpeg" width="200" alt="Manage Cards"/>
+      <br/><sub><b>📋 Manage Cards</b></sub>
+    </td>
+    <td align="center">
+      <img src="screenshots/add_card.jpeg" width="200" alt="Add Flashcard"/>
+      <br/><sub><b>➕ Add Flashcard</b></sub>
+    </td>
+  </tr>
+</table>
 
 </div>
 
 <br/>
 
-> **How to take screenshots:**  
-> Run the app → use `flutter screenshot` or press the screenshot button on your emulator.  
-> Save them in a `/screenshots` folder in your project root.
+> 📱 All screenshots captured on a **real Android device**.
 
 ---
 
@@ -66,42 +80,47 @@
 
 | Feature | Description |
 |---------|-------------|
-| 🃏 **3D Flip Animation** | Smooth Y-axis card flip with cubic easing — question on front, answer on back |
-| ➕ **Add Cards** | Create new flashcards via FAB button or the quick-add sheet |
-| ✏️ **Edit Cards** | Update any card's question or answer at any time |
-| 🗑️ **Delete Cards** | Remove cards with a confirmation dialog to prevent accidents |
-| 💾 **Persistent Storage** | Cards are saved locally using `SharedPreferences` — survive app restarts |
-| 🎨 **Light & Dark Theme** | Fully themed for both modes — auto-switches with your phone setting |
-| 📊 **Dot Progress Indicator** | Animated dot pills showing your position in the deck |
-| 🗂️ **Custom Side Drawer** | Gradient sidebar with navigation, stats, and card count |
-| ⚡ **Quick Add Sheet** | Add a card without leaving the quiz screen via the `+` header button |
-| 🔄 **Wrap-around Navigation** | Next/Prev buttons cycle endlessly through the deck |
+| 🃏 **3D Flip Animation** | Smooth Y-axis card flip with cubic easing — question front, gradient answer back |
+| ➕ **Add Cards** | Create flashcards via FAB or the quick-add header `+` button |
+| ✏️ **Edit Cards** | Update any card's question or answer from the Manage screen |
+| 🗑️ **Delete Cards** | Remove cards with confirmation dialog to prevent accidents |
+| 💾 **Persistent Storage** | Cards saved with `SharedPreferences` — survive full app restarts |
+| 🔵 **Dot Progress Indicator** | Animated pill-shaped dots tracking position in the deck |
+| 🗂️ **Custom Side Drawer** | Gradient sidebar with navigation, live stats, and card count |
+| ⚡ **Quick Add Sheet** | Add cards without leaving the quiz screen |
+| 🔄 **Wrap-around Navigation** | Next/Prev buttons cycle endlessly through the entire deck |
 
 ---
 
 ## 🏗️ Project Structure
 
 ```
-flashcard_quiz_app/
+CodeAlpha_FlashcardQuizApp/
 │
 ├── lib/
-│   ├── main.dart                        # App entry point + full Light & Dark theme
+│   ├── main.dart                        # Entry point + app theme
 │   │
 │   ├── models/
 │   │   └── flashcard.dart               # Flashcard data model (id, question, answer)
 │   │
 │   ├── providers/
-│   │   └── flashcard_provider.dart      # All state logic — add, edit, delete, flip, save
+│   │   └── flashcard_provider.dart      # All state — add, edit, delete, flip, save/load
 │   │
 │   ├── widgets/
 │   │   ├── flashcard_widget.dart        # Animated 3D flip card component
 │   │   └── app_drawer.dart              # Custom side drawer with gradient header
 │   │
 │   └── screens/
-│       ├── quiz_screen.dart             # Main study screen
+│       ├── quiz_screen.dart             # Main study / quiz screen
 │       └── manage_screen.dart           # Add / Edit / Delete cards screen
 │
-├── screenshots/                         # App screenshots for README
+├── screenshots/                         # Real device screenshots
+│   ├── quiz_screen.jpeg
+│   ├── answer_revealed.jpeg
+│   ├── drawer.jpeg
+│   ├── manage_screen.jpeg
+│   └── add_card.jpeg
+│
 ├── pubspec.yaml                         # Dependencies
 └── README.md
 ```
@@ -110,14 +129,14 @@ flashcard_quiz_app/
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| **Flutter 3.x** | UI framework — cross-platform (Android + iOS) |
-| **Dart 3.x** | Programming language |
-| **Provider 6.1** | State management — shares data across all screens |
-| **SharedPreferences 2.3** | Local key-value storage — persists card data |
-| **Google Fonts 6.2** | Typography — Plus Jakarta Sans + Nunito |
-| **Material 3** | Design system with full light/dark support |
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Flutter** | 3.x | UI framework — cross-platform Android & iOS |
+| **Dart** | 3.x | Programming language |
+| **Provider** | ^6.1.2 | State management — shared data across all screens |
+| **SharedPreferences** | ^2.3.2 | Local key-value storage — persists card data |
+| **Google Fonts** | ^6.2.1 | Typography — Plus Jakarta Sans + Nunito |
+| **Material 3** | built-in | Design system |
 
 ---
 
@@ -125,125 +144,124 @@ flashcard_quiz_app/
 
 ### Prerequisites
 
-Make sure you have Flutter installed and set up:
+Verify your Flutter environment:
 
 ```bash
 flutter doctor
 ```
 
-All items should show ✅. If not, follow the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
+All items must show ✅. Follow the [Flutter install guide](https://flutter.dev/docs/get-started/install) if needed.
 
-### Installation
-
-**1. Clone the repository**
+### Installation & Run
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/CodeAlpha_FlashcardQuizApp.git
+# 1. Clone the repo
+git clone https://github.com/Ali-Hassan-edu/CodeAlpha_FlashcardQuizApp.git
 cd CodeAlpha_FlashcardQuizApp
-```
 
-**2. Install dependencies**
-
-```bash
+# 2. Install dependencies
 flutter pub get
-```
 
-**3. Run the app**
-
-```bash
-# On connected device or emulator
+# 3. Run on device / emulator
 flutter run
 
-# Specifically on Android
-flutter run -d android
-
-# Specifically on iOS
-flutter run -d ios
-```
-
-**4. Build APK (for submission)**
-
-```bash
+# 4. Build release APK
 flutter build apk --release
+# → build/app/outputs/flutter-apk/app-release.apk
 ```
-
-The APK will be at `build/app/outputs/flutter-apk/app-release.apk`
 
 ---
 
-## 📦 Dependencies
+## 📦 pubspec.yaml — Dependencies
 
 ```yaml
 dependencies:
   flutter:
     sdk: flutter
 
-  provider: ^6.1.2           # State management
+  provider: ^6.1.2            # State management
   shared_preferences: ^2.3.2  # Local storage
   google_fonts: ^6.2.1        # Beautiful typography
 ```
 
 ---
 
-## 🎯 How It Works
+## 🎯 Architecture
 
-### Architecture — Provider Pattern
+### Provider Pattern
 
 ```
-┌─────────────────────────────────────────────┐
-│               FlashcardProvider              │
-│  • holds List<Flashcard>                     │
-│  • currentIndex, showAnswer                  │
-│  • add / edit / delete / flip / navigate     │
-│  • save to & load from SharedPreferences     │
-└────────────────┬────────────────────────────┘
-                 │  context.watch / context.read
-        ┌────────┴────────┐
-        ▼                 ▼
-  QuizScreen        ManageScreen
-  (reads state)     (mutates state)
+┌──────────────────────────────────────────────────┐
+│               FlashcardProvider                   │
+│                                                   │
+│  State :  List<Flashcard>  ·  currentIndex        │
+│           showAnswer       ·  isLoading           │
+│                                                   │
+│  Actions: add · edit · delete · flip              │
+│           next · previous · goToCard              │
+│           _saveCards()  ←→  _loadCards()          │
+└─────────────────┬────────────────────────────────┘
+                  │   context.watch / context.read
+        ┌─────────┴──────────┐
+        ▼                    ▼
+   QuizScreen           ManageScreen
+ (reads & displays)   (mutates state)
 ```
 
-### Card Flip Animation
-
-The flip uses Flutter's `AnimationController` with a `Matrix4.rotateY()` transform:
+### Card Flip — How It Works
 
 ```dart
-// 0.0 = front face (question)
-// π   = back face (answer)
+// 0.0 → π  (half revolution on Y axis)
 _animation = Tween<double>(begin: 0, end: math.pi).animate(
   CurvedAnimation(parent: _controller, curve: Curves.easeInOutCubic),
 );
+
+// Past halfway (π/2)?  → render back face + counter-rotate π
+// so the text is never rendered as a mirror image
+final isPastHalf = _animation.value > (math.pi / 2);
 ```
 
-Once the rotation passes `π/2` (halfway), the widget switches from the front face to the back face, and counter-rotates by `π` so the text isn't mirrored.
+### Storage Flow
+
+```
+App starts
+    │
+    ▼
+SharedPreferences.getString('flashcards')
+    ├── JSON found  →  jsonDecode  →  List<Flashcard>  →  show cards
+    └── Not found   →  load 4 demo seed cards          →  show cards
+
+On add / edit / delete:
+    List<Flashcard>  →  jsonEncode  →  SharedPreferences.setString
+```
 
 ---
 
-## 📋 Task Requirements Checklist
+## ✅ Task Requirements Checklist
 
-This project was built for **Task 1: Flashcard Quiz App** from CodeAlpha.
+**Task 1 — Flashcard Quiz App · CodeAlpha Internship**
 
 | Requirement | Status |
 |-------------|--------|
-| Flashcard with question on front | ✅ Done |
-| "Show Answer" button reveals back | ✅ Done |
-| Next and Previous navigation | ✅ Done |
-| Add new flashcards | ✅ Done |
-| Edit existing flashcards | ✅ Done |
-| Delete flashcards | ✅ Done |
-| Simple and clean UI | ✅ Done |
+| Flashcard with question on front | ✅ |
+| "Show Answer" button to reveal back | ✅ |
+| Next and Previous navigation | ✅ |
+| Add new flashcards | ✅ |
+| Edit existing flashcards | ✅ |
+| Delete flashcards | ✅ |
+| Simple and clean UI | ✅ |
 
-**Bonus features added beyond requirements:**
+### 🚀 Bonus — Beyond Requirements
 
-| Bonus | Details |
-|-------|---------|
-| 3D flip animation | Smooth cubic-eased Y-axis rotation |
-| Light & Dark theme | Auto-detects phone system setting |
-| Dot progress indicator | Animated pill-shaped position tracker |
-| Persistent storage | Cards saved between app sessions |
-| Custom side drawer | Gradient header with stats & navigation |
-| Quick-add bottom sheet | Add cards without leaving quiz screen |
+| Bonus Feature | Implementation |
+|---------------|----------------|
+| 3D flip animation | Y-axis `Matrix4.rotateY()` with `easeInOutCubic` |
+| Animated dot progress | Width animates from 8 px → 24 px on active card |
+| Persistent local storage | `SharedPreferences` JSON save on every mutation |
+| Custom gradient side drawer | Stats, navigation tiles, branding, card count |
+| Quick-add bottom sheet | Add card from quiz screen without navigating away |
+| Gradient answer face | Indigo-to-violet gradient with glowing box shadow |
+| Demo seed cards | 4 cards preloaded on first launch |
 
 ---
 
@@ -257,15 +275,16 @@ This project was built for **Task 1: Flashcard Quiz App** from CodeAlpha.
 | **Domain** | App Development |
 | **Task** | Task 1 — Flashcard Quiz App |
 | **Framework** | Flutter (Dart) |
+| **Year** | 2026 |
 | **Website** | [www.codealpha.tech](https://www.codealpha.tech) |
 
 </div>
 
 ---
 
-## 📁 GitHub Repository Name
+## 📁 Repository Name
 
-As per CodeAlpha internship guidelines, this repository is named:
+Per CodeAlpha internship submission guidelines:
 
 ```
 CodeAlpha_FlashcardQuizApp
@@ -277,10 +296,10 @@ CodeAlpha_FlashcardQuizApp
 
 <div align="center">
 
-**Your Name**
+**Ali Hassan**
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR_USERNAME)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR_USERNAME)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ali-hassan-45b9b53b0)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ali-Hassan-edu)
 
 </div>
 
@@ -296,8 +315,8 @@ MIT License — free to use, modify, and distribute.
 
 <div align="center">
 
-Made with ❤️ using Flutter &nbsp;•&nbsp; CodeAlpha Internship 2024
+Made with ❤️ using Flutter &nbsp;•&nbsp; CodeAlpha App Development Internship 2026
 
-⭐ Star this repo if you found it helpful!
+⭐ **Star this repo if you found it helpful!**
 
 </div>
