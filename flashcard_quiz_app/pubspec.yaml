@@ -1,0 +1,31 @@
+name: flashcard_quiz_app
+description: FlashMind — Flashcard Quiz App for CodeAlpha internship.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management — shares data across all screens
+  provider: ^6.1.2
+
+  # Local storage — saves cards between app sessions
+  shared_preferences: ^2.3.2
+
+  # Beautiful typography — Plus Jakarta Sans + Nunito fonts
+  google_fonts: ^6.2.1
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon/icon.png"
+
+flutter:
+  uses-material-design: true
